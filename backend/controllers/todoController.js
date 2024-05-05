@@ -53,6 +53,7 @@ const saveTodo = asyncHandler(async (req, res) => {
 const deleteTodo = async(req, res) => {
     const user = await User.findById(req.user._id);
     if(user) {
+        console.log("req.body.todo_id",req.body.todo_id);
         const todoExists = await Todo.findById(req.body.todo_id);
         if(todoExists) {
             todoExists.deleteOne();
